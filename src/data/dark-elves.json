@@ -1,0 +1,76 @@
+{
+  "id": "dark-elves",
+  "name": "Dark Elves",
+  "modelTypes": [
+    {
+      "id": "high-born",
+      "name": "High Born",
+      "role": "hero",
+      "recruitmentCost": 70,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 5, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 6, "A": 1, "Ld": 9 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "buckler", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #12"
+    },
+    {
+      "id": "beastmaster",
+      "name": "Beastmaster",
+      "role": "hero",
+      "recruitmentCost": 45,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 4, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 6, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "buckler", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #12"
+    },
+    {
+      "id": "fellblade",
+      "name": "Fellblade",
+      "role": "hero",
+      "recruitmentCost": 40,
+      "maxCount": 2,
+      "statLine": { "M": 5, "WS": 5, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 6, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "buckler", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #12"
+    },
+    {
+      "id": "sorceress",
+      "name": "Sorceress",
+      "role": "hero",
+      "recruitmentCost": 55,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 4, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 6, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "buckler", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #12"
+    },
+    {
+      "id": "corsair",
+      "name": "Corsair",
+      "role": "henchman",
+      "recruitmentCost": 35,
+      "maxCount": null,
+      "statLine": { "M": 5, "WS": 4, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 6, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "buckler", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #12"
+    },
+    {
+      "id": "shade",
+      "name": "Shade",
+      "role": "henchman",
+      "recruitmentCost": 30,
+      "maxCount": 5,
+      "statLine": { "M": 5, "WS": 3, "BS": 3, "S": 3, "T": 3, "W": 1, "I": 5, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "axe", "sword", "helmet", "light-armour"],
+      "source": "Town Cryer #12"
+    },
+    {
+      "id": "cold-one-beasthound",
+      "name": "Cold One Beasthound",
+      "role": "henchman",
+      "recruitmentCost": 30,
+      "maxCount": 2,
+      "statLine": { "M": 6, "WS": 3, "BS": 0, "S": 4, "T": 4, "W": 1, "I": 1, "A": 1, "Ld": 4 },
+      "equipment": [],
+      "source": "Town Cryer #12"
+    }
+  ]
+}

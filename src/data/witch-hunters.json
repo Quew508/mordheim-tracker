@@ -1,0 +1,66 @@
+{
+  "id": "witch-hunters",
+  "name": "Witch Hunters",
+  "modelTypes": [
+    {
+      "id": "witch-hunter-captain",
+      "name": "Witch Hunter Captain",
+      "role": "hero",
+      "recruitmentCost": 60,
+      "maxCount": 1,
+      "statLine": { "M": 4, "WS": 4, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 4, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "mace-morningstar", "axe", "sword", "two-handed-sword", "double-handed-axe", "crossbow", "pistol", "light-armour", "heavy-armour", "shield", "buckler", "helmet"],
+      "source": "Mordheim Rulebook"
+    },
+    {
+      "id": "witch-hunter",
+      "name": "Witch Hunter",
+      "role": "hero",
+      "recruitmentCost": 25,
+      "maxCount": 3,
+      "statLine": { "M": 4, "WS": 3, "BS": 3, "S": 3, "T": 3, "W": 1, "I": 3, "A": 1, "Ld": 7 },
+      "equipment": ["dagger", "mace-morningstar", "axe", "sword", "two-handed-sword", "double-handed-axe", "crossbow", "pistol", "light-armour", "heavy-armour", "shield", "buckler", "helmet"],
+      "source": "Mordheim Rulebook"
+    },
+    {
+      "id": "warrior-priest",
+      "name": "Warrior Priest",
+      "role": "hero",
+      "recruitmentCost": 40,
+      "maxCount": 1,
+      "statLine": { "M": 4, "WS": 3, "BS": 3, "S": 3, "T": 3, "W": 1, "I": 3, "A": 1, "Ld": 8 },
+      "equipment": ["dagger", "mace-morningstar", "axe", "sword", "two-handed-sword", "double-handed-axe", "crossbow", "pistol", "light-armour", "heavy-armour", "shield", "buckler", "helmet"],
+      "source": "Mordheim Rulebook"
+    },
+    {
+      "id": "flagellants",
+      "name": "Flagellants",
+      "role": "henchman",
+      "recruitmentCost": 40,
+      "maxCount": 5,
+      "statLine": { "M": 4, "WS": 3, "BS": 3, "S": 4, "T": 4, "W": 1, "I": 3, "A": 1, "Ld": 10 },
+      "equipment": ["flail", "two-handed-sword", "double-handed-axe"],
+      "source": "Mordheim Rulebook"
+    },
+    {
+      "id": "zealots",
+      "name": "Zealots",
+      "role": "henchman",
+      "recruitmentCost": 20,
+      "maxCount": null,
+      "statLine": { "M": 4, "WS": 2, "BS": 2, "S": 3, "T": 3, "W": 1, "I": 3, "A": 1, "Ld": 7 },
+      "equipment": ["dagger", "mace-morningstar", "axe", "sword", "spear", "two-handed-sword", "double-handed-axe", "bow", "light-armour", "shield", "helmet"],
+      "source": "Mordheim Rulebook"
+    },
+    {
+      "id": "war-hounds",
+      "name": "War Hounds",
+      "role": "henchman",
+      "recruitmentCost": 15,
+      "maxCount": 5,
+      "statLine": { "M": 6, "WS": 4, "BS": 0, "S": 4, "T": 3, "W": 1, "I": 4, "A": 1, "Ld": 5 },
+      "equipment": [],
+      "source": "Mordheim Rulebook"
+    }
+  ]
+}

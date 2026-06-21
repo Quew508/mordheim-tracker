@@ -1,0 +1,215 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-3);
+  min-height: 40px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.itemBtn:hover {
+  background-color: var(--color-surface-raised-2);
+}
+
+.itemName {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.itemCost {
+  font-size: 0.8rem;
+  color: var(--color-gold);
+}
+
+.editRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.editInput {
+  flex: 1;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  font-size: 0.9rem;
+  padding: var(--space-2);
+  min-height: 36px;
+}
+
+.editInput:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.costInput {
+  max-width: 80px;
+  flex: 0 0 80px;
+}
+
+.doneBtn {
+  background-color: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-secondary);
+  font-size: 0.875rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+  cursor: pointer;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: var(--color-ink-disabled);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.removeBtn:hover {
+  color: var(--color-accent);
+}
+
+.librarySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.libraryToggle {
+  background: none;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-secondary);
+  font-size: 0.875rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.libraryToggle:hover {
+  border-color: var(--color-wyrdstone);
+  color: var(--color-wyrdstone);
+}
+
+.libraryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.libraryItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  font-size: 0.875rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.libraryItem:hover {
+  background-color: var(--color-surface-raised-2);
+  border-color: var(--color-wyrdstone);
+}
+
+.addRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  font-size: 0.9rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+}
+
+.input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.addBtn {
+  background-color: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-secondary);
+  font-size: 0.875rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.addBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.addBtn:not(:disabled):hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.catalogueBtn {
+  background: none;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-secondary);
+  font-size: 0.875rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.catalogueBtn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}

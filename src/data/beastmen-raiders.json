@@ -1,0 +1,86 @@
+{
+  "id": "beastmen-raiders",
+  "name": "Beastmen Raiders",
+  "modelTypes": [
+    {
+      "id": "beastman-chieftain",
+      "name": "Beastman Chieftain",
+      "role": "hero",
+      "recruitmentCost": 65,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 4, "BS": 3, "S": 4, "T": 4, "W": 1, "I": 4, "A": 1, "Ld": 7 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "beastman-shaman",
+      "name": "Shaman",
+      "role": "hero",
+      "recruitmentCost": 45,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 4, "BS": 3, "S": 3, "T": 4, "W": 1, "I": 3, "A": 1, "Ld": 6 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "bestigor",
+      "name": "Bestigor",
+      "role": "hero",
+      "recruitmentCost": 45,
+      "maxCount": 2,
+      "statLine": { "M": 5, "WS": 4, "BS": 3, "S": 4, "T": 4, "W": 1, "I": 3, "A": 1, "Ld": 7 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "centigors",
+      "name": "Centigors",
+      "role": "hero",
+      "recruitmentCost": 80,
+      "maxCount": 1,
+      "statLine": { "M": 8, "WS": 4, "BS": 3, "S": 4, "T": 4, "W": 1, "I": 2, "A": 1, "Ld": 7 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "gor",
+      "name": "Gor",
+      "role": "henchman",
+      "recruitmentCost": 35,
+      "maxCount": 5,
+      "statLine": { "M": 5, "WS": 4, "BS": 3, "S": 3, "T": 4, "W": 1, "I": 3, "A": 1, "Ld": 6 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "ungor",
+      "name": "Ungor",
+      "role": "henchman",
+      "recruitmentCost": 25,
+      "maxCount": null,
+      "statLine": { "M": 5, "WS": 3, "BS": 3, "S": 3, "T": 3, "W": 1, "I": 3, "A": 1, "Ld": 6 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "warhounds-of-chaos",
+      "name": "Warhounds of Chaos",
+      "role": "henchman",
+      "recruitmentCost": 15,
+      "maxCount": 5,
+      "statLine": { "M": 7, "WS": 4, "BS": 0, "S": 4, "T": 3, "W": 1, "I": 3, "A": 1, "Ld": 5 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    },
+    {
+      "id": "minotaur",
+      "name": "Minotaur",
+      "role": "henchman",
+      "recruitmentCost": 200,
+      "maxCount": 1,
+      "statLine": { "M": 6, "WS": 4, "BS": 3, "S": 4, "T": 4, "W": 3, "I": 4, "A": 3, "Ld": 8 },
+      "equipment": [],
+      "source": "Mordheim Town Cryer supplement"
+    }
+  ]
+}

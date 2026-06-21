@@ -1,0 +1,15 @@
+
+> mordheim-campaign-tracker@0.0.0 test
+> vitest run --run
+
+
+ RUN  v4.1.9 /Users/quentingerard/Desktop/Mordheim/mordheim-campaign-tracker
+
+ ❯ src/components/HenchmanGroupDetail/HenchmanGroupDetail.test.tsx (19 tests | 1 failed) 4401ms
+     × shows stat deviation with effective value when non-zero 447ms
+
+ Test Files  1 failed | 20 passed (21)
+      Tests  1 failed | 210 passed (211)
+   Start at  20:44:34
+   Duration  17.84s (transform 3.21s, setup 0ms, import 18.15s, tests 26.54s, environment 68.23s)
+

@@ -1,0 +1,23 @@
+[
+  { "id": "dagger", "name": "Dagger", "cost": 2, "source": "Mordheim Core Rulebook" },
+  { "id": "sword", "name": "Sword", "cost": 10, "source": "Mordheim Core Rulebook" },
+  { "id": "axe", "name": "Axe", "cost": 5, "source": "Mordheim Core Rulebook" },
+  { "id": "mace-morningstar", "name": "Mace/Morningstar", "cost": 3, "source": "Mordheim Core Rulebook" },
+  { "id": "spear", "name": "Spear", "cost": 10, "source": "Mordheim Core Rulebook" },
+  { "id": "halberd", "name": "Halberd", "cost": 10, "source": "Mordheim Core Rulebook" },
+  { "id": "two-handed-sword", "name": "Two-handed Sword", "cost": 15, "source": "Mordheim Core Rulebook" },
+  { "id": "double-handed-axe", "name": "Double-handed Axe", "cost": 15, "source": "Mordheim Core Rulebook" },
+  { "id": "flail", "name": "Flail", "cost": 15, "source": "Mordheim Core Rulebook" },
+  { "id": "bow", "name": "Bow", "cost": 10, "source": "Mordheim Core Rulebook" },
+  { "id": "crossbow", "name": "Crossbow", "cost": 25, "source": "Mordheim Core Rulebook" },
+  { "id": "handgun", "name": "Handgun", "cost": 35, "source": "Mordheim Core Rulebook" },
+  { "id": "pistol", "name": "Pistol", "cost": 15, "source": "Mordheim Core Rulebook" },
+  { "id": "blunderbuss", "name": "Blunderbuss", "cost": 30, "source": "Mordheim Core Rulebook" },
+  { "id": "light-armour", "name": "Light Armour", "cost": 20, "source": "Mordheim Core Rulebook" },
+  { "id": "heavy-armour", "name": "Heavy Armour", "cost": 50, "source": "Mordheim Core Rulebook" },
+  { "id": "shield", "name": "Shield", "cost": 5, "source": "Mordheim Core Rulebook" },
+  { "id": "buckler", "name": "Buckler", "cost": 5, "source": "Mordheim Core Rulebook" },
+  { "id": "helmet", "name": "Helmet", "cost": 10, "source": "Mordheim Core Rulebook" },
+  { "id": "rope-hook", "name": "Rope & Hook", "cost": 5, "source": "Mordheim Core Rulebook" },
+  { "id": "lantern", "name": "Lantern", "cost": 10, "source": "Mordheim Core Rulebook" }
+]

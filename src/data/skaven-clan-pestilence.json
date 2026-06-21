@@ -1,0 +1,76 @@
+{
+  "id": "skaven-clan-pestilence",
+  "name": "Skaven of Clan Pestilens",
+  "modelTypes": [
+    {
+      "id": "plague-priest",
+      "name": "Plague Priest",
+      "role": "hero",
+      "recruitmentCost": 85,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 4, "BS": 4, "S": 4, "T": 4, "W": 1, "I": 5, "A": 1, "Ld": 7 },
+      "equipment": ["dagger", "sword", "spear", "halberd", "flail", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #29"
+    },
+    {
+      "id": "pestilens-sorcerer",
+      "name": "Pestilens Sorcerer",
+      "role": "hero",
+      "recruitmentCost": 45,
+      "maxCount": 1,
+      "statLine": { "M": 5, "WS": 3, "BS": 3, "S": 3, "T": 3, "W": 1, "I": 4, "A": 1, "Ld": 6 },
+      "equipment": ["dagger", "sword", "spear", "halberd", "flail", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #29"
+    },
+    {
+      "id": "plague-monks",
+      "name": "Plague Monks",
+      "role": "hero",
+      "recruitmentCost": 45,
+      "maxCount": 2,
+      "statLine": { "M": 5, "WS": 4, "BS": 3, "S": 3, "T": 4, "W": 1, "I": 5, "A": 1, "Ld": 6 },
+      "equipment": ["dagger", "sword", "spear", "halberd", "flail", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #29"
+    },
+    {
+      "id": "monk-initiates",
+      "name": "Monk Initiates",
+      "role": "hero",
+      "recruitmentCost": 20,
+      "maxCount": 2,
+      "statLine": { "M": 5, "WS": 2, "BS": 3, "S": 2, "T": 2, "W": 1, "I": 4, "A": 1, "Ld": 4 },
+      "equipment": ["dagger", "sword", "spear", "halberd", "flail", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #29"
+    },
+    {
+      "id": "plague-novices",
+      "name": "Plague Novices",
+      "role": "henchman",
+      "recruitmentCost": 20,
+      "maxCount": null,
+      "statLine": { "M": 5, "WS": 3, "BS": 3, "S": 3, "T": 3, "W": 1, "I": 4, "A": 1, "Ld": 5 },
+      "equipment": ["dagger", "sword", "spear", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #29"
+    },
+    {
+      "id": "giant-rats",
+      "name": "Giant Rats",
+      "role": "henchman",
+      "recruitmentCost": 15,
+      "maxCount": null,
+      "statLine": { "M": 6, "WS": 2, "BS": 0, "S": 3, "T": 3, "W": 1, "I": 4, "A": 1, "Ld": 4 },
+      "equipment": [],
+      "source": "Town Cryer #29"
+    },
+    {
+      "id": "rat-ogre",
+      "name": "Rat Ogre",
+      "role": "henchman",
+      "recruitmentCost": 210,
+      "maxCount": 1,
+      "statLine": { "M": 6, "WS": 3, "BS": 3, "S": 5, "T": 5, "W": 3, "I": 4, "A": 3, "Ld": 4 },
+      "equipment": [],
+      "source": "Town Cryer #29"
+    }
+  ]
+}

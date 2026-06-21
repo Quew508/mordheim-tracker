@@ -1,0 +1,228 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 480px;
+  background: var(--color-surface-raised);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-weight: 600;
+  color: var(--color-ink-primary);
+  font-size: 0.9375rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--color-ink-secondary);
+  cursor: pointer;
+  padding: var(--space-1) var(--space-2);
+  line-height: 1;
+
+  &:hover {
+    color: var(--color-ink-primary);
+  }
+}
+
+.stepContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.stepTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  margin: 0;
+}
+
+.stepMeta {
+  font-size: 0.875rem;
+  color: var(--color-ink-secondary);
+  margin: 0;
+}
+
+.advancementCallout {
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-size: 0.8125rem;
+  color: var(--color-ink-secondary);
+  font-weight: 500;
+}
+
+.input {
+  background: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-3);
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+  gap: var(--space-3);
+}
+
+.prevBtn {
+  background: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  font-size: 0.9375rem;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  &:not(:disabled):hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.nextBtn {
+  background: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  font-size: 0.9375rem;
+  margin-left: auto;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.confirmBtn {
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  padding: var(--space-2) var(--space-5);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: auto;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Discard guard — bottom sheet stacked above the overlay
+.guardOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 300;
+}
+
+.sheet {
+  width: 100%;
+  background-color: var(--color-surface-raised);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sheetTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  margin: 0;
+}
+
+.sheetBody {
+  color: var(--color-ink-secondary);
+  margin: 0;
+}
+
+.sheetActions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+.sheetCancelBtn {
+  background: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+}
+
+.sheetDiscardBtn {
+  background: none;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  padding: var(--space-2) var(--space-4);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
+}

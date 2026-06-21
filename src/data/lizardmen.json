@@ -1,0 +1,66 @@
+{
+  "id": "lizardmen",
+  "name": "Lizardmen",
+  "modelTypes": [
+    {
+      "id": "skink-priest",
+      "name": "Skink Priest",
+      "role": "hero",
+      "recruitmentCost": 60,
+      "maxCount": 1,
+      "statLine": { "M": 6, "WS": 3, "BS": 4, "S": 3, "T": 3, "W": 1, "I": 5, "A": 1, "Ld": 7 },
+      "equipment": ["dagger", "axe", "sword", "spear", "shield", "buckler"],
+      "source": "Town Cryer #11"
+    },
+    {
+      "id": "saurus-totem-warrior",
+      "name": "Saurus Totem Warrior",
+      "role": "hero",
+      "recruitmentCost": 60,
+      "maxCount": 1,
+      "statLine": { "M": 4, "WS": 4, "BS": 0, "S": 4, "T": 4, "W": 1, "I": 2, "A": 2, "Ld": 8 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #11"
+    },
+    {
+      "id": "skink-great-crests",
+      "name": "Skink Great Crests",
+      "role": "hero",
+      "recruitmentCost": 30,
+      "maxCount": 2,
+      "statLine": { "M": 6, "WS": 3, "BS": 3, "S": 3, "T": 2, "W": 1, "I": 4, "A": 1, "Ld": 7 },
+      "equipment": ["dagger", "axe", "sword", "spear", "shield", "buckler"],
+      "source": "Town Cryer #11"
+    },
+    {
+      "id": "skink-braves",
+      "name": "Skink Braves",
+      "role": "henchman",
+      "recruitmentCost": 20,
+      "maxCount": null,
+      "statLine": { "M": 6, "WS": 2, "BS": 3, "S": 3, "T": 2, "W": 1, "I": 4, "A": 1, "Ld": 6 },
+      "equipment": ["dagger", "axe", "spear", "shield", "buckler"],
+      "source": "Town Cryer #11"
+    },
+    {
+      "id": "saurus-braves",
+      "name": "Saurus Braves",
+      "role": "henchman",
+      "recruitmentCost": 40,
+      "maxCount": 4,
+      "statLine": { "M": 4, "WS": 3, "BS": 0, "S": 4, "T": 4, "W": 1, "I": 1, "A": 2, "Ld": 7 },
+      "equipment": ["dagger", "axe", "sword", "spear", "halberd", "two-handed-sword", "double-handed-axe", "shield", "helmet", "light-armour"],
+      "source": "Town Cryer #11"
+    },
+    {
+      "id": "kroxigor",
+      "name": "Kroxigor",
+      "role": "henchman",
+      "recruitmentCost": 200,
+      "maxCount": 1,
+      "statLine": { "M": 6, "WS": 3, "BS": 0, "S": 5, "T": 4, "W": 3, "I": 1, "A": 3, "Ld": 8 },
+      "equipment": ["halberd"],
+      "source": "Town Cryer #11"
+    }
+  ]
+}

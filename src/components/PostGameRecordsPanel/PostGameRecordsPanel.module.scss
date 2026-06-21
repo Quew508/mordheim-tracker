@@ -1,0 +1,188 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.subheading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-secondary);
+  margin: 0;
+  padding-top: var(--space-2);
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.listEntry {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.entryText {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--color-ink-primary);
+}
+
+.entryGold {
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: ui-monospace, 'Courier New', monospace;
+  color: var(--color-gold);
+  min-width: 48px;
+  text-align: right;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-ink-disabled);
+  font-size: 1.1rem;
+  padding: var(--space-1);
+  min-width: 28px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.addRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.addInput {
+  flex: 1;
+  background-color: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.875rem;
+  min-height: 44px;
+
+  &::placeholder {
+    color: var(--color-ink-disabled);
+  }
+}
+
+.addGold {
+  width: 64px;
+  background-color: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-2);
+  font-size: 0.875rem;
+  min-height: 44px;
+
+  &::placeholder {
+    color: var(--color-ink-disabled);
+  }
+}
+
+.addBtn {
+  background-color: var(--color-surface-raised-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-ink-primary);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  min-height: 44px;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-border);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+/* Delete confirmation sheet */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 100;
+}
+
+.sheet {
+  width: 100%;
+  background-color: var(--color-surface-raised);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sheetTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  margin: 0;
+}
+
+.sheetBody {
+  font-size: 0.875rem;
+  color: var(--color-ink-secondary);
+  margin: 0;
+}
+
+.sheetActions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+.sheetCancelBtn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-ink-secondary);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  font-size: 0.875rem;
+  min-height: 44px;
+}
+
+.sheetDeleteBtn {
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  min-height: 44px;
+}

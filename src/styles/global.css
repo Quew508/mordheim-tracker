@@ -1,0 +1,112 @@
+:root {
+  --color-surface-base: #1C1E24;
+  --color-surface-raised: #252830;
+  --color-surface-raised-2: #2C2F38;
+  --color-ink-primary: #ECEAF0;
+  --color-ink-secondary: #8A8FA0;
+  --color-ink-disabled: #5A5E6A;
+  --color-accent: #C0392B;
+  --color-border: #2E3040;
+  --color-gold: #D4A030;
+  --color-wyrdstone: #A0C0D8;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Courier New', monospace;
+}
+
+[data-theme='light'] {
+  --color-surface-base: #FAFAFA;
+  --color-surface-raised: #F0F0F0;
+  --color-surface-raised-2: #E8E8E8;
+  --color-ink-primary: #111111;
+  --color-ink-secondary: #666666;
+  --color-ink-disabled: #999999;
+  --color-accent: #3B6FCC;
+  --color-border: #E0E0E0;
+  --color-gold: #9A6A00;
+  --color-wyrdstone: #3A6A8A;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-base);
+  color: var(--color-ink-primary);
+  line-height: 1.5;
+  min-height: 100dvh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button,
+[role='button'],
+input,
+select,
+label {
+  min-height: 44px;
+}
+
+@media print {
+  .app-top-bar,
+  .overflow-menu,
+  .btn-add,
+  .btn-back,
+  .ooa-counter,
+  .storage-warning-banner {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+  .warband-print-section {
+    page-break-after: always;
+  }
+  .warband-print-section:last-child {
+    page-break-after: avoid;
+  }
+}

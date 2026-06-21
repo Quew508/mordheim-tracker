@@ -1,0 +1,72 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-4);
+  text-align: left;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background-color: var(--color-surface-raised-2);
+  }
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+}
+
+.faction {
+  font-size: 0.875rem;
+  color: var(--color-ink-secondary);
+}
+
+.statRow {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.statValue {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+}
+
+.statGold {
+  color: var(--color-gold);
+}
+
+.statGoldValue {
+  color: var(--color-gold);
+}
+
+.statWyrdstone {
+  color: var(--color-wyrdstone);
+}
+
+.statWyrdstoneValue {
+  color: var(--color-wyrdstone);
+}
