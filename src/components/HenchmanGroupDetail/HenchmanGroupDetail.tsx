@@ -14,10 +14,6 @@ import styles from './HenchmanGroupDetail.module.scss';
 const STATUS_OPTIONS: ModelStatus[] = ['Active', 'Dead', 'Retired'];
 const DEVIATION_KEYS: (keyof StatLine)[] = ['M', 'WS', 'BS', 'S', 'T', 'W', 'I', 'A', 'Ld'];
 
-function arrowChar(dev: number) {
-  return dev > 0 ? '▲' : '▼';
-}
-
 export default function HenchmanGroupDetailPage() {
   const { id, groupId } = useParams<{ id: string; groupId: string }>();
   const { state, dispatch } = useWarband();
@@ -63,13 +59,20 @@ export default function HenchmanGroupDetailPage() {
   );
 
   const saveModel = useCallback(
-    (model: IndividualModel) => {
+    (updatedModel: IndividualModel) => {
+      if (creationDraft) {
+        setDraftGroup((prev) => ({
+          ...prev,
+          models: prev.models.map((m) => (m.id === updatedModel.id ? updatedModel : m)),
+        }));
+        return;
+      }
       if (!warband || !group) return;
       const wId = warband.id;
       const gId = group.id;
       dispatch({
         type: 'UPDATE_INDIVIDUAL_MODEL',
-        payload: { warbandId: wId, groupId: gId, model },
+        payload: { warbandId: wId, groupId: gId, model: updatedModel },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -111,8 +114,9 @@ export default function HenchmanGroupDetailPage() {
   function handleAddToRoster() {
     if (!warband) return;
     const finalGroup = { ...draftGroup, name: name.trim(), role: role.trim() };
+    const finalModelCount = finalGroup.models.length;
     const totalGold =
-      (finalGroup.recruitmentCost ?? 0) +
+      (finalGroup.recruitmentCost ?? 0) * finalModelCount +
       finalGroup.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
     if (totalGold > 0) {
       dispatch({ type: 'UPDATE_WARBAND', payload: { ...warband, goldCrowns: warband.goldCrowns - totalGold } });
@@ -130,20 +134,58 @@ export default function HenchmanGroupDetailPage() {
       injuryLog: [],
       ooa: 0,
     };
-    dispatch({
-      type: 'ADD_INDIVIDUAL_MODEL',
-      payload: { warbandId: warband!.id, groupId: group!.id, model: newModel },
-    });
+    if (creationDraft) {
+      setDraftGroup((prev) => ({ ...prev, models: [...prev.models, newModel] }));
+    } else {
+      if (group?.recruitmentCost && warband) {
+        dispatch({
+          type: 'UPDATE_WARBAND',
+          payload: { ...warband, goldCrowns: warband.goldCrowns - group.recruitmentCost },
+        });
+      }
+      dispatch({
+        type: 'ADD_INDIVIDUAL_MODEL',
+        payload: { warbandId: warband!.id, groupId: group!.id, model: newModel },
+      });
+    }
     setExpandedModelId(newModel.id);
     setModelsOpen(true);
   }
 
-  const activeCount = model.modelCountOverride !== null
-    ? model.modelCountOverride
-    : model.models.filter((m) => m.status === 'Active').length;
+  function handleDeleteModel(modelId: string) {
+    if (creationDraft) {
+      setDraftGroup((prev) => ({ ...prev, models: prev.models.filter((m) => m.id !== modelId) }));
+    } else {
+      if (group?.recruitmentCost && warband) {
+        dispatch({
+          type: 'UPDATE_WARBAND',
+          payload: { ...warband, goldCrowns: warband.goldCrowns + group.recruitmentCost },
+        });
+      }
+      dispatch({
+        type: 'REMOVE_INDIVIDUAL_MODEL',
+        payload: { warbandId: warband!.id, groupId: group!.id, modelId },
+      });
+    }
+    if (expandedModelId === modelId) setExpandedModelId(null);
+  }
+
+  const activeCount = model.models.filter((m) => m.status === 'Active').length;
+
+  const modelCount = model.models.length;
+  const canAddModel = model.modelCountOverride === null || model.models.length < model.modelCountOverride;
+  const modelsOverflow = model.modelCountOverride !== null && model.models.length > model.modelCountOverride
+    ? model.models.length - model.modelCountOverride
+    : 0;
 
   return (
     <div className={styles.page}>
+      {!creationDraft && modelsOverflow > 0 && (
+        <div className={styles.errorBanner} role="alert">
+          Models exceed the override ({model.models.length} models, override is {model.modelCountOverride}).
+          Remove {modelsOverflow} model{modelsOverflow > 1 ? 's' : ''} or increase the Model Count Override before leaving this page.
+        </div>
+      )}
       {!creationDraft && (
       <div className={styles.menuContainer} ref={menuRef}>
         <button
@@ -247,7 +289,7 @@ export default function HenchmanGroupDetailPage() {
               if (!creationDraft && isFirstSet && v !== null && warband) {
                 dispatch({
                   type: 'UPDATE_WARBAND',
-                  payload: { ...warband, goldCrowns: warband.goldCrowns - v },
+                  payload: { ...warband, goldCrowns: warband.goldCrowns - v * model.models.length },
                 });
               }
             }}
@@ -259,11 +301,15 @@ export default function HenchmanGroupDetailPage() {
         const eqCost = model.equipment.reduce((sum, i) => sum + (i.cost ?? 0), 0);
         const total = (model.recruitmentCost ?? 0) + eqCost;
         if (total === 0 && model.recruitmentCost === null) return null;
+        const recruitTotal = (model.recruitmentCost ?? 0) * modelCount;
+        const grandTotal = recruitTotal + eqCost;
         return (
           <p className={styles.totalCost}>
-            Total cost per model: <strong>{total} gc</strong>
-            {model.recruitmentCost !== null && eqCost > 0 && (
-              <span className={styles.totalCostBreakdown}> ({model.recruitmentCost} recruitment + {eqCost} equipment)</span>
+            Total cost: <strong>{grandTotal} gc</strong>
+            {model.recruitmentCost !== null && modelCount > 0 && (
+              <span className={styles.totalCostBreakdown}>
+                {' '}({modelCount} × {model.recruitmentCost} recruitment{eqCost > 0 ? ` + ${eqCost} equipment` : ''})
+              </span>
             )}
           </p>
         );
@@ -278,12 +324,19 @@ export default function HenchmanGroupDetailPage() {
       {/* Panels */}
       <div className={styles.panels}>
         {/* Individual Models panel */}
+        <div className={modelsOverflow > 0 ? styles.panelError : undefined}>
         <CollapsibleSection
-          title={`Models${model.models.length > 0 ? ` (${activeCount} active)` : ''}`}
+          title={`Models${model.models.length > 0 ? ` (${activeCount} active)` : ''}${modelsOverflow > 0 ? ` — ${modelsOverflow} over override` : ''}`}
           isOpen={modelsOpen}
           onToggle={() => setModelsOpen((v) => !v)}
         >
           <div className={styles.panelContent}>
+            {modelsOverflow > 0 && (
+              <p className={styles.overflowBanner} role="alert">
+                {model.models.length} models tracked but override is set to {model.modelCountOverride}.
+                Remove {modelsOverflow} model{modelsOverflow > 1 ? 's' : ''} or increase the Model Count Override.
+              </p>
+            )}
             <ul className={styles.modelList}>
               {model.models.map((indivModel, index) => {
                 const displayName = indivModel.name || `#${index + 1}`;
@@ -300,7 +353,7 @@ export default function HenchmanGroupDetailPage() {
                         {indivModel.status}
                       </span>
                     </button>
-                    {indivModel.status === 'Active' && (
+                    {indivModel.status === 'Active' && !creationDraft && (
                       <div className={styles.ooa}>
                         <button
                           className={styles.ooaBtn}
@@ -323,6 +376,11 @@ export default function HenchmanGroupDetailPage() {
                         )}
                       </div>
                     )}
+                    <button
+                      className={styles.deleteModelBtn}
+                      onClick={() => handleDeleteModel(indivModel.id)}
+                      aria-label={`Delete ${displayName}`}
+                    >✕</button>
                   </div>
                     {isExpanded && (
                       <div className={styles.modelDetail}>
@@ -361,25 +419,20 @@ export default function HenchmanGroupDetailPage() {
                               return (
                                 <div key={key} className={styles.devCell}>
                                   <span className={styles.devLabel}>{key}</span>
-                                  {dev !== 0 && (
-                                    <span className={styles.devEffective}>
-                                      {base} ({arrowChar(dev)}{effective})
-                                    </span>
-                                  )}
                                   <input
                                     type="number"
                                     className={styles.devInput}
-                                    value={dev}
+                                    value={effective}
                                     onChange={(e) =>
                                       saveModel({
                                         ...indivModel,
                                         statDeviations: {
                                           ...indivModel.statDeviations,
-                                          [key]: Number(e.target.value) || 0,
+                                          [key]: (Number(e.target.value) || 0) - base,
                                         },
                                       })
                                     }
-                                    aria-label={`${key} deviation`}
+                                    aria-label={`${key} stat`}
                                   />
                                 </div>
                               );
@@ -401,11 +454,12 @@ export default function HenchmanGroupDetailPage() {
                 );
               })}
             </ul>
-            {!creationDraft && (
+            {canAddModel && (
             <button className={styles.addModelBtn} onClick={handleAddModel}>+ Add Model</button>
             )}
           </div>
         </CollapsibleSection>
+        </div>
 
         {/* XP & Advancement */}
         <CollapsibleSection
@@ -493,9 +547,21 @@ export default function HenchmanGroupDetailPage() {
         />
       )}
       {creationDraft && (
-        <button className={styles.addToRosterBtn} onClick={handleAddToRoster}>
-          Add to Roster
-        </button>
+        <>
+          {modelsOverflow > 0 && (
+            <p className={styles.overflowBanner} role="alert">
+              {model.models.length} models added but override is set to {model.modelCountOverride}.
+              Remove {modelsOverflow} model{modelsOverflow > 1 ? 's' : ''} or increase the Model Count Override before adding to the roster.
+            </p>
+          )}
+          <button
+            className={styles.addToRosterBtn}
+            onClick={handleAddToRoster}
+            disabled={modelsOverflow > 0}
+          >
+            Add to Roster
+          </button>
+        </>
       )}
     </div>
   );

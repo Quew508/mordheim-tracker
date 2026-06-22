@@ -47,11 +47,6 @@ function createBlankGroup(): HenchmanGroup {
   };
 }
 
-function activeModelCount(group: HenchmanGroup): number {
-  if (group.modelCountOverride !== null) return group.modelCountOverride;
-  return group.models.filter((m) => m.status === 'Active').length;
-}
-
 export default function RosterSection({ warband }: RosterSectionProps) {
   const { dispatch } = useWarband();
   const { factions } = useReferenceData();
@@ -151,9 +146,11 @@ export default function RosterSection({ warband }: RosterSectionProps) {
             );
           })}
           {warband.henchmanGroups.map((group) => {
-            const count = activeModelCount(group);
-            const allGone = group.models.length > 0 && count === 0;
-            const groupCost = (group.recruitmentCost ?? 0) + group.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
+            const trackedCount = group.models.length;
+            const groupActiveCount = group.models.filter((m) => m.status === 'Active').length;
+            const allGone = trackedCount > 0 && groupActiveCount === 0;
+            const groupModelCount = group.models.length;
+            const groupCost = (group.recruitmentCost ?? 0) * groupModelCount + group.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
             return (
               <li key={group.id} className={styles.row}>
                 <button
@@ -162,9 +159,9 @@ export default function RosterSection({ warband }: RosterSectionProps) {
                 >
                   <span className={styles.heroName}>{group.name || '(Unnamed Group)'}</span>
                   {group.role && <span className={styles.heroRole}>{group.role}</span>}
-                  {group.models.length > 0 && (
+                  {trackedCount > 0 && (
                     <span className={styles.modelCount}>
-                      {allGone ? 'All Dead/Retired' : `×${count}`}
+                      {allGone ? 'All Dead/Retired' : `×${trackedCount}`}
                     </span>
                   )}
                   {groupCost > 0 && <span className={styles.heroCost}>{groupCost} gc</span>}

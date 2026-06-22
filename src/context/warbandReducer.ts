@@ -16,6 +16,7 @@ export type WarbandAction =
   | { type: 'DELETE_HENCHMAN_GROUP'; payload: { warbandId: string; groupId: string } }
   | { type: 'ADD_INDIVIDUAL_MODEL'; payload: { warbandId: string; groupId: string; model: IndividualModel } }
   | { type: 'UPDATE_INDIVIDUAL_MODEL'; payload: { warbandId: string; groupId: string; model: IndividualModel } }
+  | { type: 'REMOVE_INDIVIDUAL_MODEL'; payload: { warbandId: string; groupId: string; modelId: string } }
   | { type: 'INCREMENT_OOA'; payload: { warbandId: string; delta: 1 | -1 } & ({ heroId: string } | { groupId: string; modelId: string }) }
   | { type: 'CLEAR_OOA'; payload: { warbandId: string } & ({ heroId: string } | { groupId: string; modelId: string }) }
   | { type: 'RECORD_POST_GAME'; payload: {
@@ -172,6 +173,23 @@ export function warbandReducer(state: AppData, action: WarbandAction): AppData {
                           m.id === action.payload.model.id ? structuredClone(action.payload.model) : m
                         ),
                       }
+                    : g
+                ),
+              }
+            : w
+        ),
+      };
+
+    case 'REMOVE_INDIVIDUAL_MODEL':
+      return {
+        ...state,
+        warbands: state.warbands.map((w) =>
+          w.id === action.payload.warbandId
+            ? {
+                ...w,
+                henchmanGroups: w.henchmanGroups.map((g) =>
+                  g.id === action.payload.groupId
+                    ? { ...g, models: g.models.filter((m) => m.id !== action.payload.modelId) }
                     : g
                 ),
               }

@@ -16,7 +16,7 @@ export function computeWarbandRating(warband: Warband): number {
   let henchmanCount = 0;
   let henchmanXp = 0;
   for (const group of warband.henchmanGroups.filter((g) => g.status === 'Active')) {
-    const modelCount = Math.max(0, group.modelCountOverride ?? group.models.length);
+    const modelCount = group.models.length;
     henchmanCount += modelCount;
     henchmanXp += modelCount * (group.xp || 0);
   }

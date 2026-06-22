@@ -149,8 +149,9 @@ describe('HenchmanGroupDetailPage', () => {
     render(<HenchmanGroupDetailPage />, { wrapper: GroupWrapper });
     await user.click(screen.getByRole('button', { name: /models/i }));
     await user.click(screen.getByRole('button', { name: /^grunther/i }));
-    // WS base is 3, deviation is +1 → effective 4, shown as "3 (▲4)"
-    expect(screen.getByText('3 (▲4)')).toBeInTheDocument();
+    // WS base is 3, deviation is +1 → effective 4; input now shows effective value directly
+    const wsInput = screen.getByLabelText('WS stat') as HTMLInputElement;
+    expect(wsInput.value).toBe('4');
   });
 
   it('redirects to /warband/:id when group not found', () => {
