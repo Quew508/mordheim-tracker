@@ -136,10 +136,11 @@ export default function HenchmanGroupDetailPage() {
     if (creationDraft) {
       setDraftGroup((prev) => ({ ...prev, models: [...prev.models, newModel] }));
     } else {
-      if (group?.recruitmentCost && warband) {
+      const perModelCost = (group?.recruitmentCost ?? 0) + (group?.equipment.reduce((s, i) => s + (i.cost ?? 0), 0) ?? 0);
+      if (perModelCost > 0 && warband) {
         dispatch({
           type: 'UPDATE_WARBAND',
-          payload: { ...warband, goldCrowns: warband.goldCrowns - group.recruitmentCost },
+          payload: { ...warband, goldCrowns: warband.goldCrowns - perModelCost },
         });
       }
       dispatch({
@@ -155,10 +156,11 @@ export default function HenchmanGroupDetailPage() {
     if (creationDraft) {
       setDraftGroup((prev) => ({ ...prev, models: prev.models.filter((m) => m.id !== modelId) }));
     } else {
-      if (group?.recruitmentCost && warband) {
+      const perModelRefund = (group?.recruitmentCost ?? 0) + (group?.equipment.reduce((s, i) => s + (i.cost ?? 0), 0) ?? 0);
+      if (perModelRefund > 0 && warband) {
         dispatch({
           type: 'UPDATE_WARBAND',
-          payload: { ...warband, goldCrowns: warband.goldCrowns + group.recruitmentCost },
+          payload: { ...warband, goldCrowns: warband.goldCrowns + perModelRefund },
         });
       }
       dispatch({
