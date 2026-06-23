@@ -485,7 +485,7 @@ describe('warbandReducer — DELETE_HERO gold refund', () => {
 });
 
 describe('warbandReducer — DELETE_HENCHMAN_GROUP gold refund', () => {
-  it('refunds recruitmentCost + equipment costs on delete', () => {
+  it('refunds (recruitmentCost + equipment costs) × modelCount on delete — 1 model', () => {
     const group = makeGroup({
       recruitmentCost: 25,
       equipment: [{ id: 'e-1', name: 'Spear', cost: 5, source: 'custom' }],
@@ -495,7 +495,24 @@ describe('warbandReducer — DELETE_HENCHMAN_GROUP gold refund', () => {
       type: 'DELETE_HENCHMAN_GROUP',
       payload: { warbandId: 'w-1', groupId: 'g-1' },
     });
+    // (25 + 5) × 1 = 30 refund; 30 + 30 = 60
     expect(next.warbands[0].goldCrowns).toBe(60);
+    expect(next.warbands[0].henchmanGroups).toHaveLength(0);
+  });
+
+  it('refunds (recruitmentCost + equipment costs) × modelCount on delete — 2 models', () => {
+    const group = makeGroup({
+      recruitmentCost: 25,
+      equipment: [{ id: 'e-1', name: 'Spear', cost: 5, source: 'custom' }],
+      models: [makeModel({ id: 'm-1' }), makeModel({ id: 'm-2' })],
+    });
+    const state = makeState(makeWarband({ henchmanGroups: [group], goldCrowns: 30 }));
+    const next = warbandReducer(state, {
+      type: 'DELETE_HENCHMAN_GROUP',
+      payload: { warbandId: 'w-1', groupId: 'g-1' },
+    });
+    // (25 + 5) × 2 = 60 refund; 30 + 60 = 90
+    expect(next.warbands[0].goldCrowns).toBe(90);
     expect(next.warbands[0].henchmanGroups).toHaveLength(0);
   });
 
@@ -534,7 +551,7 @@ describe('warbandReducer — DUPLICATE_HERO gold deduction', () => {
 });
 
 describe('warbandReducer — DUPLICATE_HENCHMAN_GROUP gold deduction', () => {
-  it('deducts recruitmentCost + equipment costs on duplicate', () => {
+  it('deducts (recruitmentCost + equipment costs) × modelCount on duplicate — 1 model', () => {
     const group = makeGroup({
       recruitmentCost: 20,
       equipment: [{ id: 'e-1', name: 'Shield', cost: 5, source: 'custom' }],
@@ -544,7 +561,23 @@ describe('warbandReducer — DUPLICATE_HENCHMAN_GROUP gold deduction', () => {
       type: 'DUPLICATE_HENCHMAN_GROUP',
       payload: { warbandId: 'w-1', groupId: 'g-1', newGroupId: 'g-copy' },
     });
+    // (20 + 5) × 1 = 25 deducted; 80 - 25 = 55
     expect(next.warbands[0].goldCrowns).toBe(55);
+  });
+
+  it('deducts (recruitmentCost + equipment costs) × modelCount on duplicate — 2 models', () => {
+    const group = makeGroup({
+      recruitmentCost: 20,
+      equipment: [{ id: 'e-1', name: 'Shield', cost: 5, source: 'custom' }],
+      models: [makeModel({ id: 'm-1' }), makeModel({ id: 'm-2' })],
+    });
+    const state = makeState(makeWarband({ henchmanGroups: [group], goldCrowns: 80 }));
+    const next = warbandReducer(state, {
+      type: 'DUPLICATE_HENCHMAN_GROUP',
+      payload: { warbandId: 'w-1', groupId: 'g-1', newGroupId: 'g-copy' },
+    });
+    // (20 + 5) × 2 = 50 deducted; 80 - 50 = 30
+    expect(next.warbands[0].goldCrowns).toBe(30);
   });
 
   it('does not change gold when group has null recruitmentCost and no equipment', () => {

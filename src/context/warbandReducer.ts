@@ -130,7 +130,7 @@ export function warbandReducer(state: AppData, action: WarbandAction): AppData {
           if (w.id !== delGroupWarbandId) return w;
           const group = w.henchmanGroups.find((g) => g.id === delGroupId);
           const refund = group
-            ? (group.recruitmentCost ?? 0) + group.equipment.reduce((s, i) => s + (i.cost ?? 0), 0)
+            ? ((group.recruitmentCost ?? 0) + group.equipment.reduce((s, i) => s + (i.cost ?? 0), 0)) * group.models.length
             : 0;
           return {
             ...w,
@@ -357,7 +357,7 @@ export function warbandReducer(state: AppData, action: WarbandAction): AppData {
           copy.id = newGroupId;
           copy.name = `${src.name} (copy)`;
           copy.models = copy.models.map((m) => ({ ...m, id: crypto.randomUUID(), ooa: 0 }));
-          const cost = (src.recruitmentCost ?? 0) + src.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
+          const cost = ((src.recruitmentCost ?? 0) + src.equipment.reduce((s, i) => s + (i.cost ?? 0), 0)) * src.models.length;
           return { ...w, henchmanGroups: [...w.henchmanGroups, copy], goldCrowns: w.goldCrowns - cost };
         }),
       };

@@ -116,8 +116,7 @@ export default function HenchmanGroupDetailPage() {
     const finalGroup = { ...draftGroup, name: name.trim(), role: role.trim() };
     const finalModelCount = finalGroup.models.length;
     const totalGold =
-      (finalGroup.recruitmentCost ?? 0) * finalModelCount +
-      finalGroup.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
+      ((finalGroup.recruitmentCost ?? 0) + finalGroup.equipment.reduce((s, i) => s + (i.cost ?? 0), 0)) * finalModelCount;
     if (totalGold > 0) {
       dispatch({ type: 'UPDATE_WARBAND', payload: { ...warband, goldCrowns: warband.goldCrowns - totalGold } });
     }
@@ -302,13 +301,13 @@ export default function HenchmanGroupDetailPage() {
         const total = (model.recruitmentCost ?? 0) + eqCost;
         if (total === 0 && model.recruitmentCost === null) return null;
         const recruitTotal = (model.recruitmentCost ?? 0) * modelCount;
-        const grandTotal = recruitTotal + eqCost;
+        const grandTotal = recruitTotal + eqCost * modelCount;
         return (
           <p className={styles.totalCost}>
             Total cost: <strong>{grandTotal} gc</strong>
             {model.recruitmentCost !== null && modelCount > 0 && (
               <span className={styles.totalCostBreakdown}>
-                {' '}({modelCount} × {model.recruitmentCost} recruitment{eqCost > 0 ? ` + ${eqCost} equipment` : ''})
+                {' '}({modelCount} × {model.recruitmentCost} recruitment{eqCost > 0 ? ` + ${modelCount} × ${eqCost} equipment` : ''})
               </span>
             )}
           </p>
@@ -516,7 +515,7 @@ export default function HenchmanGroupDetailPage() {
                 if (!creationDraft) {
                   const oldCost = model.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
                   const newCost = newEquipment.reduce((s, i) => s + (i.cost ?? 0), 0);
-                  const delta = newCost - oldCost;
+                  const delta = (newCost - oldCost) * modelCount;
                   if (delta !== 0) {
                     dispatch({ type: 'UPDATE_WARBAND', payload: { ...warband, goldCrowns: warband.goldCrowns - delta } });
                   }
@@ -535,7 +534,7 @@ export default function HenchmanGroupDetailPage() {
           customLibrary={warband.customEquipmentLibrary}
           onAdd={(item) => {
             if (!creationDraft && item.cost != null && item.cost !== 0) {
-              dispatch({ type: 'UPDATE_WARBAND', payload: { ...warband, goldCrowns: warband.goldCrowns - item.cost } });
+              dispatch({ type: 'UPDATE_WARBAND', payload: { ...warband, goldCrowns: warband.goldCrowns - item.cost * modelCount } });
             }
             if (creationDraft) {
               setDraftGroup((prev) => ({ ...prev, equipment: [...prev.equipment, item] }));
