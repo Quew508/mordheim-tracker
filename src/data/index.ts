@@ -11,7 +11,7 @@ import carnivalOfChaos from './carnival-of-chaos.json';
 import restlessDead from './restless-dead.json';
 import darkElves from './dark-elves.json';
 import skavenClanPestilence from './skaven-clan-pestilence.json';
-import ogres from './ogres.json';
+import maneaters from './maneaters.json';
 import tombKings from './tomb-guardians.json';
 import nightGoblins from './night-goblins.json';
 import blackOrcs from './black-orcs.json';
@@ -31,7 +31,7 @@ export const factions: FactionTemplate[] = [
   restlessDead as FactionTemplate,
   darkElves as FactionTemplate,
   skavenClanPestilence as FactionTemplate,
-  ogres as FactionTemplate,
+  maneaters as FactionTemplate,
   tombKings as FactionTemplate,
   nightGoblins as FactionTemplate,
   blackOrcs as FactionTemplate,

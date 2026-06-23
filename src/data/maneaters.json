@@ -1,0 +1,66 @@
+{
+  "id": "maneaters",
+  "name": "Maneaters",
+  "modelTypes": [
+    {
+      "id": "maneaters-captain",
+      "name": "Captain",
+      "role": "hero",
+      "recruitmentCost": 145,
+      "maxCount": 1,
+      "statLine": { "M": 6, "WS": 4, "BS": 3, "S": 4, "T": 4, "W": 3, "I": 3, "A": 2, "Ld": 8 },
+      "equipment": [],
+      "source": "Border Town Burning"
+    },
+    {
+      "id": "maneaters-mountain-guide",
+      "name": "Mountain Guide",
+      "role": "hero",
+      "recruitmentCost": 145,
+      "maxCount": 1,
+      "statLine": { "M": 6, "WS": 4, "BS": 3, "S": 4, "T": 4, "W": 3, "I": 3, "A": 2, "Ld": 8 },
+      "equipment": [],
+      "source": "Border Town Burning"
+    },
+    {
+      "id": "maneaters-youngblood",
+      "name": "Youngblood",
+      "role": "hero",
+      "recruitmentCost": 45,
+      "maxCount": 3,
+      "statLine": { "M": 6, "WS": 2, "BS": 2, "S": 3, "T": 4, "W": 2, "I": 2, "A": 1, "Ld": 6 },
+      "equipment": [],
+      "source": "Border Town Burning"
+    },
+    {
+      "id": "maneaters-bulls",
+      "name": "Bulls",
+      "role": "henchman",
+      "recruitmentCost": 140,
+      "maxCount": 2,
+      "statLine": { "M": 6, "WS": 3, "BS": 2, "S": 4, "T": 4, "W": 3, "I": 2, "A": 3, "Ld": 7 },
+      "equipment": [],
+      "source": "Border Town Burning"
+    },
+    {
+      "id": "maneaters-half-growns",
+      "name": "Half-growns",
+      "role": "henchman",
+      "recruitmentCost": 85,
+      "maxCount": null,
+      "statLine": { "M": 6, "WS": 3, "BS": 2, "S": 4, "T": 4, "W": 2, "I": 2, "A": 2, "Ld": 7 },
+      "equipment": [],
+      "source": "Border Town Burning"
+    },
+    {
+      "id": "maneaters-sabretusks",
+      "name": "Sabretusks",
+      "role": "henchman",
+      "recruitmentCost": 125,
+      "maxCount": 2,
+      "statLine": { "M": 8, "WS": 4, "BS": 0, "S": 4, "T": 4, "W": 2, "I": 4, "A": 3, "Ld": 4 },
+      "equipment": [],
+      "source": "Border Town Burning"
+    }
+  ]
+}
