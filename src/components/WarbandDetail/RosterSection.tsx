@@ -150,7 +150,7 @@ export default function RosterSection({ warband }: RosterSectionProps) {
             const groupActiveCount = group.models.filter((m) => m.status === 'Active').length;
             const allGone = trackedCount > 0 && groupActiveCount === 0;
             const groupModelCount = group.models.length;
-            const groupCost = (group.recruitmentCost ?? 0) * groupModelCount + group.equipment.reduce((s, i) => s + (i.cost ?? 0), 0);
+            const groupCost = ((group.recruitmentCost ?? 0) + group.equipment.reduce((s, i) => s + (i.cost ?? 0), 0)) * groupModelCount;
             return (
               <li key={group.id} className={styles.row}>
                 <button
